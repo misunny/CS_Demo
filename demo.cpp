@@ -123,7 +123,10 @@ public:
 	{
 		// uninit variable
 		y = instY;
-		char* e = getenv("LIMIT");
+		char* e = NULL;//= getenv("LIMIT");
+
+		char st = 'e';
+		e = &st;
 
 		if (e != NULL)
 			Method4(atoi(e));
@@ -150,7 +153,7 @@ public:
 	{
 		if (length == 4)
 			// null pointer dereference - y.field is NULL when length is 4
-			strcpy(y.field, "x");
+			//strcpy(y.field, "x");
 
 		delete[] y.field;
 	}
@@ -363,9 +366,9 @@ int main(int argc, char** argv)
 
 	shared++; robShared++;
 
-	dangerous = getenv("TAINTED");
+	//dangerous = getenv("TAINTED");
 
-	useDangerous(dangerous);
+	//useDangerous(dangerous);
 
 
 	Base* basePtr, * basePtr1;
@@ -386,8 +389,8 @@ int main(int argc, char** argv)
 
 	buffer[index] = 'a';
 
-	strcpy(n, "OOps!");
-	strcpy(o, "OOps!");
+	//strcpy(n, "OOps!");
+	//strcpy(o, "OOps!");
 	// mismatched new[] / delete
 	mem1 = instX1->Method1();
 	instX1->Method2(mem1);
