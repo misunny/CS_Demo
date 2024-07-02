@@ -1,12 +1,41 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "demo.h"
+#include <iostream>
 #include <time.h>
 
 int robShared = 31;
 
-extern void memoryLeak();
+//extern void memoryLeak();
+
+static int var;
+
+
+char* header_retMem()
+{
+	return (char*)malloc(10);
+}
+
+
+//extern char*  retMem();
+
+void callretMem()
+{
+	header_retMem();
+}
+
+class myClass
+{
+public:
+	~myClass()
+	{
+		std::cout << "DELETING" << std::endl;
+		//delete this;
+	}
+};
+
+
+
 
 void NTAD()
 {
@@ -326,7 +355,7 @@ int main(int argc, char** argv)
 
 	std::cout << "hello" << std::endl;
 
-	memoryLeak();
+	//memoryLeak();
 
 	newError();
 
@@ -347,7 +376,7 @@ int main(int argc, char** argv)
 	basePtr->setField(basePtr->getValue());
 	basePtr1->setField(basePtr1->getValue());
 
-	memoryLeak();
+	//memoryLeak();
 
 	retMem();
 
