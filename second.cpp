@@ -31,3 +31,11 @@ void memoryLeak()
 	
 	goAndUse(ptr, ptr, 10);	
 }
+
+void test(int test3){
+	int test1 = 0;
+	for(test1; test1 > test3; test1++){
+		test3 += 1;
+	}
+	char test2 = (char) test3;
+}
