@@ -15,8 +15,9 @@ variables:
     CODESONAR: 'C:\Program Files\CodeSecure\CodeSonar9.0\codesonar\bin\codesonar.exe'
     CODESONAR_PROJECT_NAME: 'GitlabCI'
     CODESONAR_HUB: 'http://127.0.0.1:7340'
-script:
-    ->
-    &"${CODESONAR}" install-launchd "${CODESONAR_HUB}"
-    ->
-    &"${CODESONAR}" analyze "${CODESONAR_PROJECT_NAME}" -clean -foreground "${CODESONAR_HUB}" g++ -v -o demo demo.cpp second.cpp 
+
+codesonar_build:
+    script:
+        - echo "CodeSonar analyze start"
+        - "&\"${CODESONAR}\" install-launchd \"${CODESONAR_HUB}\""
+        - "&\"${CODESONAR}\" analyze \"${CODESONAR_PROJECT_NAME}\" -clean -foreground \"${CODESONAR_HUB}\" g++ -v -o demo demo.cpp second.cpp"
